@@ -46,7 +46,7 @@
         
         $("#searchResults").append(htmlImage);
         $("#searchResults").click(function () {
-        $("#searchResults").fadeOut("slow");
+        $("#searchResults").fadeOut("slow").fadeIn("slow");
         });
 
         $("button").click(function(){
