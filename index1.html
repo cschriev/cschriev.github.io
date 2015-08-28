@@ -1,0 +1,70 @@
+<!-- DOCTYPE HTML -->
+<html>
+<head>
+	<title>My portfolio page</title>
+	<style type="text/css">
+	<!-- CSS goes here --> 
+	body {
+	}
+p {
+	font-size: 20px;
+	font-family: "Verdana", Verdana, sans-serif;
+}
+
+li  { 
+font-family: "Verdana", Verdana, sans-serif;
+}
+h2  { 
+font-family: "Verdana", Verdana, sans-serif;
+}
+h1  {
+    color: maroon;
+    margin-left: 40px;
+    font-family: "Verdana", Verdana, sans-serif;
+}
+#image {
+	border: 10px solid transparent;
+	padding-left: 50px;
+}
+.listing {
+	color: red;
+}
+.party {
+	color: blue;
+}
+	</style>
+	<script type="text/js">
+	<!-- Javascript goes here -->
+	</script>
+</head>
+<body>
+<h1>My portfolio<h1>
+<!-- Add HTML below -->
+	<h2>Profile Picture</h2>
+	<p><div id ="Image"><img src="profilepicture.jpg"/></div></p>
+	<p>Cathrin Schriever</p>
+	<p>Contact me via email whatevercomestoyourmind@gmail.com</p>
+	<p>Interests:
+		<div class="listing"><ul>
+  		<div class="party"><li>Marketing</li></div>
+  		<li>Entrepreneurship</li>
+  		<li>Coding :)</li>
+  	</ul></div>
+	</p>
+	<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+	<div class="row">
+		<label for="name">Your name:</label><br />
+		<input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+	</div>
+	<div class="row">
+		<label for="email">Your email:</label><br />
+		<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+	</div>
+	<div class="row">
+		<label for="message">Your message:</label><br />
+		<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+	</div>
+	<input id="submit_button" type="submit" value="Send email" />
+</form>	
+</body>
+</html>

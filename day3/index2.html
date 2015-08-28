@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>jQurey</title>
+<script type="text/javascript" src="C:\Users\Cathrin\Desktop/jquery-1.11.3.js"></script>
+ 
+<script type="text/javascript">
+ 
+	$(document).ready(function(){
+ 
+		console.log("jQuery is working");	
+		
+ 	$("#searchButton").click(function(){
+    console.log("clicks");
+    var value = $("#searchQuery").val();
+    console.log(value);
+
+	$.ajax({
+    url: "https://itunes.apple.com/search?term=" + value,
+    dataType: 'jsonp',
+    success: function(itunesData){
+        console.log(itunesData);
+        var myResults = itunesData.results;
+        console.log(myResults);
+
+        var trackNamesArray = []
+	for (var i = 0; i < myResults.length; i++){
+    var myTrack = myResults[i].trackName;
+     trackNamesArray.push(myTrack);
+	console.log(myTrack);
+	}
+	//console.log(trackNamesArray);
+    
+
+
+
+    var htmlList = "";
+    for (var i = 0; i < myResults.length; i++){
+    var songTitle = myResults[i].trackName;
+    var artWork = myResults[i].artworkUrl30;
+    console.log(artWork);
+    htmlList += "<img src='" + artWork + "'>";
+    htmlList += "<li>" + songTitle + "</li>";
+    }
+    $("#searchResults").append(htmlList);
+}
+ });
+
+	});
+	
+});
+ 
+
+	</script>
+</head>
+<body>
+<input type="text" id="searchQuery"/>
+<button id ="searchButton" value ="Search">Click here</button>
+<ul id="searchResults">
+</ul>
+
+</body>
+</html>
