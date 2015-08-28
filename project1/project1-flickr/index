@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>jQurey</title>
+    <link type="text/css"; rel="stylesheet"; href="stylesheet.css"></link>
+    <script type="text/javascript" src="C:\Users\Cathrin\Desktop/jquery-1.11.3.js"></script>
+ 
+<script type="text/javascript">
+ 
+	$(document).ready(function(){
+
+        console.log("jQuery is working");   
+        
+        var sampleNum;
+          $("#sampleButton").click(function(){
+             sampleNum = $("#sampleQuery").val();
+            console.log(sampleNum)
+            });
+ 
+		$("#searchButton").click(function(){
+        var value = $("#searchQuery").val();
+        console.log(value);
+            
+
+        var flickrURL = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+        $.ajax({
+        url: flickrURL,
+        dataType: "jsonp",
+        data: {
+            tags: value,
+            format : 'json',
+        },
+        success: function(flickrData) {
+            console.log(flickrData.items)
+
+            var htmlImage = "";
+            var newArray = []
+            var resultsArray = flickrData.items
+        for (var i = 0; i < sampleNum; i++){
+        var track = resultsArray[i].media.m;
+        console.log(track);
+        htmlImage+="<img src='"+track+"'>";
+        newArray.push(track);
+                        }
+           
+        
+        $("#searchResults").append(htmlImage);
+        $("#searchResults").click(function () {
+        $("#searchResults").fadeOut("slow");
+        });
+
+        $("button").click(function(){
+        $("#searchResults").empty().fadeIn("slow");
+
+        });
+
+        
+
+    }
+        });
+        });
+
+});
+ 
+
+	</script>
+</head>
+<body>
+    <h1 class="textbox">Google Search for Flickr</h1>
+
+    <h2 class="textbox">Enter the number of Images & any keyword you like below.</h2>
+    <h2 class="textbox">Let Flickr surprise you! :)</h2>
+    
+    <div>
+    <input type="text" id="sampleQuery"/>
+    <input type="submit" id="sampleButton" value="No. of Images"/>
+    <input type="text" id="searchQuery"/>
+    <button id ="searchButton" value ="Search">Let's do it!</button>
+</div>
+    
+    <p class="textbox">Make sure you click both buttons!</p>
+    
+    <h2 class="textbox">Here you go:</h2>
+    
+    <ul id="searchResults">
+    </ul>
+
+</body>
+</html>
